@@ -59,3 +59,45 @@ docker run -d --name mycontainer -p 80:80 myimage
 3. `http://localhost/awards_interval`: Retorna o produtor com o maior e o menor intervalo de tempo entre os prêmios.
 
 
+# Testes unitários para a API
+Este arquivo contém os testes unitários para a API.
+## Testes
+### Teste 1: Obter o intervalo máximo do produtor
+Este teste verifica se a API retorna o intervalo máximo do produtor.
+
+​
+python
+def test_get_producer_max_interval(self):
+    response = self.client.get("/producer_max_interval")
+    self.assertEqual(response.status_code, 200)
+    data = response.json()
+    self.assertIn("max", data)
+
+### Teste 2: Obter o intervalo mínimo do produtor
+Este teste verifica se a API retorna o intervalo mínimo do produtor.
+
+​
+python
+def test_get_producer_min_interval(self):
+    response = self.client.get("/producer_min_interval")
+    self.assertEqual(response.status_code, 200)
+    data = response.json()
+    self.assertIn("min", data)
+
+### Teste 3: Obter o intervalo de prêmios
+Este teste verifica se a API retorna o intervalo de prêmios.
+
+​
+python
+def test_get_awards_interval(self):
+    response = self.client.get("/awards_interval")
+    self.assertEqual(response.status_code, 200)
+    data = response.json()
+    self.assertIn("min", data)
+    self.assertIn("max", data)
+
+## Executando os testes
+Para executar os testes, basta executar o seguinte comando:
+​
+
+unittest.main()
